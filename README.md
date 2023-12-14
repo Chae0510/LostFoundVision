@@ -1,9 +1,7 @@
-# GraduationPrject
-## Lost&Found Vision
+# GraduationProject - Lost&Found Vision
+This project is our graduation project.
 
----------------------------------------------------
 # Brief Explanation of this project (Eng)
-
 This is an application that allows you to register and find lost items.
 The purpose of this project is to make it easier and more convenient to find and register lost objects by utilizing computer vision.
 It provides convenience to users by allowing the model to recognize and analyze the photo of the lost object to be registered to capture the features of the photo and automatically write the features instead of the author.
