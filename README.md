@@ -7,11 +7,12 @@ The purpose of this project is to make it easier and more convenient to find and
 It provides convenience to users by allowing the model to recognize and analyze the photo of the lost object to be registered to capture the features of the photo and automatically write the features instead of the author.
 We hope this project will help society even a little.
 
+----------------------------------------------------
+
 # Description about files (Explanation of codes)
 ## main.dart
 It's literally a main screen and a home screen. We've got buttons and a bottom navigation bar to move to various screens.
 
-----------------------------------------------------
 ## addGoods Folder
 It is a folder with files that allow you to register lost items and check what you wrote.
 ### addGoods.dart
@@ -25,7 +26,7 @@ It's a file that allows you to see my writings at a glance with a small list of 
 ### seeMyGul- GulDetailScreen.dart
 This is a screen that shows the details of each post
 
-----------------------------------------------------
+
 ## findGoods Folder
 It's a screen where you can find lost items
 ### findGoodsdart
@@ -35,7 +36,7 @@ This is a screen that falls when you tap the marker in findGoods.dart. It shows 
 ### seeGuDetail.dart
 It's a screen that contains the details of the post
 
-----------------------------------------------------
+
 ## firebase Folder
 It's literally a folder related to firebase
 ### firebase_options.dart
@@ -43,7 +44,7 @@ File with options for communicating with firebase
 ### gulItem.dart
 It's a file that matches the variables in the flutter with the variables in the firebase
 
-----------------------------------------------------
+
 ## mainScreen Folder
 It's a folder with files on the home screen
 ### alarm.dart
@@ -58,7 +59,7 @@ You can search for major, minor, sub-categories, and features
 ### village.dart
 This is a screen where you can set up your village.
 
-----------------------------------------------------
+
 ## personalInfo Folder
 It's literally a folder with files related to personal information
 ### findPassword.dart
@@ -80,7 +81,7 @@ This screen is used to change the password
 ### login Folder - changeProfile Folder - changeProfile.dart
 This file is used when you want to change your profile. You can change your profile picture, change your password, and set up your village
 
-----------------------------------------------------
+
 ### imsi_join.dart is just a test file if the infomation that I signed up for is going well.
 
 ----------------------------------------------------
