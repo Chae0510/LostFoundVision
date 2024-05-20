@@ -69,7 +69,7 @@ class _AddGoodsScreenState extends State<AddGoodsScreen>{
     final response = await http.post(
       Uri.parse('https://api.openai.com/v1/chat/completions'), // // OpenAI GPT-4 Turbo with Vision 엔드포인트
       headers: {
-        'Authorization': 'Bearer sk-proj-eVuGk2eBu18YLVW5dMZET3BlbkFJ9lZoleiIgN20NDHvKo5q', // OpenAI API 키
+        'Authorization': 'api key', // OpenAI API 키
         'Content-Type': 'application/json',
       },
       body: requestPayload,
