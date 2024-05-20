@@ -4,6 +4,11 @@ import 'package:fortest/main.dart';
 import 'package:image_picker/image_picker.dart';
 import 'imageDisplay.dart';
 
+//////////챗지피티///////////////
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+///////////////////////////////
+
 void main() {
   runApp(const MaterialApp(
     home: AddGoodsScreen(),
@@ -21,6 +26,10 @@ class AddGoodsScreen extends StatefulWidget {
 class _AddGoodsScreenState extends State<AddGoodsScreen>{
   XFile? _image;
 
+  ////챗지피티 특징 서술/////
+  String _description = "Upload an image to get description";
+
+
   @override
   void initState() {
     super.initState();
@@ -31,12 +40,58 @@ class _AddGoodsScreenState extends State<AddGoodsScreen>{
     XFile? image = await picker.pickImage(source: source);
 
     if (image != null) {
+
+      /////////// 이미지 선택 후 설명 가져오기
+      await _getDescription(File(image.path));
+
+
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => ImageDisplayScreen(imagePath: image.path)),
+        MaterialPageRoute(builder: (context) => ImageDisplayScreen(imagePath: image.path,
+            description: _description)),
       );
     }
   }
+
+  ////////////////
+  Future<void> _getDescription(File image) async {
+    final bytes = image.readAsBytesSync();
+    final base64Image = base64Encode(bytes);
+
+    final requestPayload = jsonEncode({
+      'model': 'gpt-3.5-turbo-16k',
+      'prompt': '이 사물의 특징을 한줄로 설명해줘(예를 들어 색, 사물, 외형 등)',
+      'image': base64Image, // Base64 encoded image
+      'max_tokens': 100,
+    });
+
+
+    final response = await http.post(
+      Uri.parse('https://api.openai.com/v1/chat/completions'), // // OpenAI GPT-4 Turbo with Vision 엔드포인트
+      headers: {
+        'Authorization': 'Bearer sk-proj-eVuGk2eBu18YLVW5dMZET3BlbkFJ9lZoleiIgN20NDHvKo5q', // OpenAI API 키
+        'Content-Type': 'application/json',
+      },
+      body: requestPayload,
+    );
+
+    print('Response status: ${response.statusCode}');
+    print('Response body: ${response.body}');
+
+    if (response.statusCode == 200) {
+      final responseData = jsonDecode(response.body);
+      setState(() {
+        _description = responseData['choices'][0]['message']['content'];
+      });
+    } else {
+      print('Error: ${response.body}');
+      setState(() {
+        _description = 'Failed to get description';
+      });
+    }
+
+  }
+  ////////////////
 
   @override
   Widget build(BuildContext context) {

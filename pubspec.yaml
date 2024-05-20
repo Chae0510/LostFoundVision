@@ -16,6 +16,10 @@ dependencies:
   file_picker: ^4.0.10
   flutter_screenutil: ^5.9.0
 
+  ##### chatgpt 사용해야함 ###
+  http: ^0.13.3
+  ###########################
+
   shared_preferences: ^2.0.13
 
   tflite_flutter: ^0.9.1
