@@ -69,7 +69,7 @@ class _AddGoodsScreenState extends State<AddGoodsScreen>{
     final response = await http.post(
       Uri.parse('https://api.openai.com/v1/chat/completions'), // // OpenAI GPT-4 Turbo with Vision 엔드포인트
       headers: {
-        // 키 때문에 git에 커밋 안 되는거 같아서 일단 주석처리함
+        // 키 일단 주석처리함!
         // 'Authorization': 'Bearer sk-proj-eVuGk2eBu18YLVW5dMZET3BlbkFJ9lZoleiIgN20NDHvKo5q', // OpenAI API 키
         'Content-Type': 'application/json',
       },
