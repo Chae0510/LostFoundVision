@@ -55,22 +55,36 @@ class _AddGoodsScreenState extends State<AddGoodsScreen>{
 
   ////////////////
   Future<void> _getDescription(File image) async {
-    final bytes = image.readAsBytesSync();
+    final bytes = await image.readAsBytes();
     final base64Image = base64Encode(bytes);
 
     final requestPayload = jsonEncode({
-      'model': 'gpt-3.5-turbo-16k',
-      'prompt': '이 사물의 특징을 한줄로 설명해줘(예를 들어 색, 사물, 외형 등)',
-      'image': base64Image, // Base64 encoded image
-      'max_tokens': 100,
+      // 'model': 'gpt-4-1106-vision-preview',
+      // 'prompt': '이 사물의 특징을 한줄로 설명해줘(ex. 색, 사물, 외형)',
+      // 'image': base64Image, // Base64 encoded image
+      // 'max_tokens': 100,
+
+      'model': 'gpt-4-1106-vision-preview',
+      'messages': [
+        {
+          'role': 'system',
+          'content': 'You are a helpful assistant that provides a one-line description of images.'
+        },
+        {
+          'role': 'user',
+          'content': 'Describe this object in korean. (Ex. color, type, appearance)'
+              'If you cannot do it, please tell me the reason as detail. Also can you tell me the specific way to fix the problem?'
+        }
+      ],
+      'max_tokens': 200,
     });
 
 
     final response = await http.post(
-      Uri.parse('https://api.openai.com/v1/chat/completions'), // // OpenAI GPT-4 Turbo with Vision 엔드포인트
+      Uri.parse('https://api.openai.com/v1/chat/completions'), // // 엔드포인트
       headers: {
-        'Authorization': 'api key', // OpenAI API 키
-        'Content-Type': 'application/json',
+        'Authorization': 'Bearer sk-proj-QxU5O1cC767iUJnlJfaPT3BlbkFJr468O8n4wfMpGiWQa20O', // OpenAI API 키
+        'Content-Type': 'application/json; charset=utf-8',
       },
       body: requestPayload,
     );
@@ -79,7 +93,9 @@ class _AddGoodsScreenState extends State<AddGoodsScreen>{
     print('Response body: ${response.body}');
 
     if (response.statusCode == 200) {
-      final responseData = jsonDecode(response.body);
+      //final responseData = jsonDecode(response.body);
+      final responseData = jsonDecode(utf8.decode(response.bodyBytes));
+
       setState(() {
         _description = responseData['choices'][0]['message']['content'];
       });
@@ -115,16 +131,6 @@ class _AddGoodsScreenState extends State<AddGoodsScreen>{
       ),
 
       body: Container(
-        // decoration: const BoxDecoration(
-        //   gradient: LinearGradient(
-        //     begin: Alignment.topCenter,
-        //     end: Alignment.center,
-        //     colors: [
-        //       Color.fromARGB(255, 130, 155, 255), // 시작 색상
-        //       Color.fromARGB(255, 255, 255, 255), // 끝 색상
-        //     ],
-        //   ),
-        // ),
 
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -133,10 +139,10 @@ class _AddGoodsScreenState extends State<AddGoodsScreen>{
                 ? const Text('업로드할 방식을 선택하세요',
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600,))
                 : Image.file(
-                    File(_image!.path),
-                    width: 400,
-                    height: 400,
-                  ),
+              File(_image!.path),
+              width: 400,
+              height: 400,
+            ),
 
             const SizedBox(height: 50),
 

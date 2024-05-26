@@ -597,10 +597,31 @@ class _ImageDisplayScreenState extends State<ImageDisplayScreen> {
                   buildInputField('종류', item),
                   buildCategoryDropdown(), // Added the category dropdown
                   const SizedBox(height: 8),
-                  Text(
-                    '특징: $description',
-                    style: TextStyle(fontSize: 20),
+                  // Text(
+                  //   '특징: $description',
+                  //   style: TextStyle(fontSize: 20),
+                  // ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0), // Add padding
+                    child: TextFormField(
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w700,
+                      ),
+                      decoration: InputDecoration(
+                        labelText: '특징',
+                        border: OutlineInputBorder(),
+                      ),
+                      maxLines: null, // Allow unlimited lines
+                      initialValue: description, // Set initial value
+                      onChanged: (newValue) {
+                        setState(() {
+                          description = newValue;
+                        });
+                      },
+                    ),
                   ),
+
                   SizedBox(height: 7),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
