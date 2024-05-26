@@ -59,10 +59,6 @@ class _AddGoodsScreenState extends State<AddGoodsScreen>{
     final base64Image = base64Encode(bytes);
 
     final requestPayload = jsonEncode({
-      // 'model': 'gpt-4-1106-vision-preview',
-      // 'prompt': '이 사물의 특징을 한줄로 설명해줘(ex. 색, 사물, 외형)',
-      // 'image': base64Image, // Base64 encoded image
-      // 'max_tokens': 100,
 
       'model': 'gpt-4-1106-vision-preview',
       'messages': [
@@ -83,7 +79,7 @@ class _AddGoodsScreenState extends State<AddGoodsScreen>{
     final response = await http.post(
       Uri.parse('https://api.openai.com/v1/chat/completions'), // // 엔드포인트
       headers: {
-        'Authorization': 'api key', // OpenAI API 키
+        'Authorization': ' ', // OpenAI API 키
         'Content-Type': 'application/json; charset=utf-8',
       },
       body: requestPayload,
