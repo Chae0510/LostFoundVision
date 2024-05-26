@@ -79,7 +79,7 @@ class _AddGoodsScreenState extends State<AddGoodsScreen>{
     final response = await http.post(
       Uri.parse('https://api.openai.com/v1/chat/completions'), // // 엔드포인트
       headers: {
-        'Authorization': ' ', // OpenAI API 키
+        'Authorization': '', // OpenAI API 키
         'Content-Type': 'application/json; charset=utf-8',
       },
       body: requestPayload,
