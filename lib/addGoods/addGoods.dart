@@ -68,7 +68,7 @@ class _AddGoodsScreenState extends State<AddGoodsScreen>{
         },
         {
           'role': 'user',
-          'content': 'Describe this object in korean. (Ex. color, type, appearance)'
+          'content': 'Describe this object in korean. (Ex. color, type, appearance). This is the image: https://firebasestorage.googleapis.com/v0/b/lostfoundvision-bb117.appspot.com/o/userProfileImages%2Fpinktumbler.jpeg?alt=media&token=819c9543-cec4-4412-90a9-93bfd7c1b923'
               'If you cannot do it, please tell me the reason as detail. Also can you tell me the specific way to fix the problem?'
         }
       ],
@@ -79,7 +79,7 @@ class _AddGoodsScreenState extends State<AddGoodsScreen>{
     final response = await http.post(
       Uri.parse('https://api.openai.com/v1/chat/completions'), // // 엔드포인트
       headers: {
-        'Authorization': '', // OpenAI API 키
+        'Authorization': 'api key', // OpenAI API 키
         'Content-Type': 'application/json; charset=utf-8',
       },
       body: requestPayload,
