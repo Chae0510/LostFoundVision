@@ -4,6 +4,7 @@ import 'package:fortest/main.dart';
 import 'package:image_picker/image_picker.dart';
 import 'imageDisplay.dart';
 
+
 //////////챗지피티///////////////
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -17,7 +18,7 @@ void main() {
 
 
 class AddGoodsScreen extends StatefulWidget {
-  const AddGoodsScreen({super.key});
+  const AddGoodsScreen({Key? key}) : super(key: key);
 
   @override
   _AddGoodsScreenState createState() => _AddGoodsScreenState();
@@ -68,8 +69,8 @@ class _AddGoodsScreenState extends State<AddGoodsScreen>{
         },
         {
           'role': 'user',
-          'content': 'Describe this object in korean. (Ex. color, type, appearance). This is the image: https://firebasestorage.googleapis.com/v0/b/lostfoundvision-bb117.appspot.com/o/userProfileImages%2Fpinktumbler.jpeg?alt=media&token=819c9543-cec4-4412-90a9-93bfd7c1b923'
-              'If you cannot do it, please tell me the reason as detail. Also can you tell me the specific way to fix the problem?'
+          'content': 'Describe this object in Korean. (Ex. color, type, appearance). This is the image: image/jpeg;base64,$base64Image'
+
         }
       ],
       'max_tokens': 200,
@@ -79,7 +80,7 @@ class _AddGoodsScreenState extends State<AddGoodsScreen>{
     final response = await http.post(
       Uri.parse('https://api.openai.com/v1/chat/completions'), // // 엔드포인트
       headers: {
-        'Authorization': 'api key', // OpenAI API 키
+        'Authorization': 'OpenAI Key', // OpenAI API 키
         'Content-Type': 'application/json; charset=utf-8',
       },
       body: requestPayload,
@@ -96,7 +97,7 @@ class _AddGoodsScreenState extends State<AddGoodsScreen>{
         _description = responseData['choices'][0]['message']['content'];
       });
     } else {
-      print('Error: ${response.body}');
+      print('Failed to get description: ${response.statusCode} - ${response.body}');
       setState(() {
         _description = 'Failed to get description';
       });
