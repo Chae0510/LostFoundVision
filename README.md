@@ -22,19 +22,19 @@ It is a folder with files that allow you to **register lost items and check what
 This is a screen where you can choose **whether to upload a photo from the gallery or take a picture with a camera**.
 
 ### imageDisplay.dart
-<img src="https://github.com/berry1015/fortest/assets/79952916/3bc33edc-eefc-4e2c-a0bb-2f1ec8176708" alt="ImageDisplay" width="200" height="400"></br>
-It is a file that allows you to **put uploaded photos into the model to extract features** and create them.
+<img src="https://github.com/berry1015/fortest/assets/79952916/1be5a5ac-54a6-49ad-b987-b379059266e0" alt="ImageDisplay" width="200" height="400"></br>
+It is a file that allows you to **put uploaded photos into the openAI model to extract features** and create them.
 
 ### imsi_gul.dart
-<img src="https://github.com/berry1015/fortest/assets/79952916/621d229f-ee53-4168-98fa-473c562c6783" alt="imsi_gul" width="200" height="400"></br>
+<img src="https://github.com/berry1015/fortest/assets/79952916/a0f1a548-fcf6-482b-8e32-b387ebdb9723" alt="imsi_gul" width="200" height="400"></br>
 It's a file that displays **all the previous writings as a list of big cards**.
 
 ### seeMyGul - seeMyGul.dart
-<img src="https://github.com/berry1015/fortest/assets/79952916/10ea7e71-b8a3-4a65-bfe1-098ee660b402" alt="seeMyGul" width="200" height="400"></br>
+<img src="https://github.com/berry1015/fortest/assets/79952916/5694906a-77f9-483b-b191-050e144edf30" alt="seeMyGul" width="200" height="400"></br>
 It's a file that allows you to **see my writings at a glance with a small list of cards**.
 
 ### seeMyGul- GulDetailScreen.dart
-<img src="https://github.com/berry1015/fortest/assets/79952916/e0f3bb6e-84f7-4bf2-a324-6100f6c6eacb" alt="GulDetailScreen" width="200" height="400"></br>
+<img src="https://github.com/berry1015/fortest/assets/79952916/8a19114b-624b-4cae-9363-a8ac3749a9c4" alt="GulDetailScreen" width="200" height="400"></br>
 This is a screen that shows the **details of each post**.
 
 
@@ -44,7 +44,7 @@ It's a screen where you can **find lost items**.
 
 ### findGoods.dart
 <img src="https://github.com/berry1015/fortest/assets/79952916/15c8bb06-046e-478a-aa19-843587510cbc" alt="findGoods" width="200" height="400"></br>
-A file that **displays a map of the Republic of Korea and markers for each administrative district** of Seoul on the screen **using Naver Map api**. Tap a **specific marker to go to the lost and found list of the administrative district**.
+A file that **displays a map of the Republic of Korea and markers for each administrative district of Seoul** on the screen **using Naver Map api**. Tap a **specific marker to go to the lost and found list of the administrative district**.
 
 ### next_screen.dart
 <img src="https://github.com/berry1015/fortest/assets/79952916/1c7e9e0e-98d0-4ba1-b19a-8b58b7aa4085" alt="next_screen" width="200" height="400"></br>
